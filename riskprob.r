@@ -10,10 +10,6 @@
 
 
 
-
-
-
-
 risk <- function(...){
   attack.t <- readline(prompt="Enter atacking troops: ")
   deff.t <- readline(prompt="Enter deffending troops: ")
@@ -25,10 +21,6 @@ risk <- function(...){
 
 
 risk()
-
-
-
-
 
 
 
