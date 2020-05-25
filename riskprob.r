@@ -11,30 +11,17 @@
 
 
 
-
-
-
 risk <- function(...){
   attack.t <- readline(prompt="Enter atacking troops: ")
   deff.t <- readline(prompt="Enter deffending troops: ")
   k <- attack.t
   n <- deff.t
-  while (k >1|n>0 ){dice(k, n); fight(attack, deff); }
+  while (k ==1|n==0 ){dice(k, n); fight(attack, deff); }
   return(list(attack.t=attack.t, deff.t=deff.t))
 }
 
 
 risk()
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,6 +55,8 @@ dice <- function (k, n) {
   }
   return(list(attack=attack, deff=deff))
 }
+
+
 
 fight <- function(a, b){
   if (a == 3 && b == 2){
