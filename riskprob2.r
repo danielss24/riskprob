@@ -10,34 +10,47 @@
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c4d186359208587f1bce1f68e71969bedd8ad65c
 risk <- function(...){
   attack.t <- readline(prompt="Enter atacking troops: ")
   deff.t <- readline(prompt="Enter deffending troops: ")
   k <- attack.t
   n <- deff.t
-  while (k ==1|n==0 ){dice(k, n); fight(attack, deff); }
+  while (k >1|n>0 ){dice(k, n); fight(attack, deff); }
   return(list(attack.t=attack.t, deff.t=deff.t))
 }
+
+
+
+
+
+
+risk <- function(...){
+  attack.t <- readline(prompt="Enter atacking troops: ")
+  deff.t <- readline(prompt="Enter deffending troops: ")
+  k <- attack.t
+  n <- deff.t
+  while (k >1|n>0 ){
+    tiradas <- dice(k,n)
+    fight(tiradas[attack], tiradas[deff])
+  }
+  return(k, n)
+}
+
 
 
 risk()
 
 
-
-
-<<<<<<< HEAD
-=======
-
+k <- 10
+n <- 10
 
 
 
 
 
->>>>>>> c4d186359208587f1bce1f68e71969bedd8ad65c
+
+
 #Funciones
 
 dice <- function (k, n) {
@@ -67,8 +80,6 @@ dice <- function (k, n) {
   }
   return(list(attack=attack, deff=deff))
 }
-
-
 
 fight <- function(a, b){
   if (a == 3 && b == 2){
@@ -115,3 +126,5 @@ fight <- function(a, b){
   }
   return(c(k, n))
 }
+
+
