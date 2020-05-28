@@ -1,0 +1,92 @@
+## RISK PROBABILITY. GAME OF RISK
+
+
+# Una primera funci?n, que determina 
+
+#Introduce k y n
+#Funci?n "dice", para tirada
+# Funci?n "fight", para tropas muertas.
+#Repetimos. Bucle while
+
+
+
+
+#Funciones
+
+
+```{r}
+dice <- function(k, n){
+  attack <- sample(1:6, min(k, 3))
+  deff <- sample(1:6, min(k, 2))
+  return(list(attack=attack, deff=deff))
+}
+```
+
+
+
+```{r}
+
+fight <- function(att, deff){
+  att <- sort(unlist(att, use.names = FALSE), decreasing = TRUE)
+  deff <- sort(unlist(deff, use.names = FALSE), decreasing = TRUE)
+  
+  minLength <- min(c(length(att), length(deff)))
+  
+  attLoss <- 0
+  deffLoss <- 0
+  print("Fase de lucha")
+  for(var in 1:minLength){
+    print("Attack", att[var])
+    print("Defense", deff[var])
+    if(att[var] > deff[var]){
+      deffLoss = 1 + deffLoss
+    } else {
+      attLoss = 1 + attLoss
+    }
+  }
+  print("Fin pelea")
+  
+  return (list(attack = attLoss, deff = deffLoss))
+}
+```
+
+
+```{r}
+
+
+risk <- function(...){
+  k <- readline(prompt="Enter atacking troops: ")
+  n <- readline(prompt="Enter deffending troops: ")
+  at <- as.numeric(k)
+  df <- as.numeric(n)
+
+  round <- 0
+  
+  while (at > 0 & df > 0){
+    tiradas <- dice(at, dt)     #generar dos listas con las tiradas
+    count <- fight(tiradas['attack'],tiradas['deff']) #restar tropas a la función
+    at <- at - as.numeric(count['attack'])
+    df <- df - as.numeric(count['deff'])
+    print("aaaa")
+    print("Round", round)
+    print(at)
+    print(df)
+    round <- round + 1
+  }
+  print(at)
+  print(df)
+  
+  return(c(k, n))
+}
+
+```
+
+
+
+```{r}
+
+
+risk()
+
+
+```
